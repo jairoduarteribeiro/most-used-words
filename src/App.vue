@@ -4,15 +4,19 @@
       <v-toolbar-title>Most Used Words</v-toolbar-title>
     </v-app-bar>
 
-    <v-content></v-content>
+    <v-content>
+      <Home />
+    </v-content>
   </v-app>
 </template>
 
 <script>
+import Home from "./components/Home";
+
 export default {
   name: "App",
 
-  components: {},
+  components: { Home },
 
   data: () => ({
     //
