@@ -4,6 +4,7 @@ module.exports = rows => {
       const words = rows
         .filter(filterValidRows)
         .map(removePunctuation)
+        .map(removeTags)
       resolve(words)
     } catch (exception) {
       reject(exception)
@@ -19,3 +20,5 @@ const filterValidRows = row => {
 }
 
 const removePunctuation = row => row.replace(/[,?!.-]/g, '')
+
+const removeTags = row => row.replace(/(<[^>]+)>/ig, '').trim()
