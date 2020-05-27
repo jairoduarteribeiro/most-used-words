@@ -3,6 +3,7 @@ module.exports = rows => {
     try {
       const words = rows
         .filter(filterValidRows)
+        .map(removePunctuation)
       resolve(words)
     } catch (exception) {
       reject(exception)
@@ -16,3 +17,5 @@ const filterValidRows = row => {
   const notInterval = !row.includes('-->')
   return notNumber && notEmpty && notInterval
 }
+
+const removePunctuation = row => row.replace(/[,?!.-]/g, '')
