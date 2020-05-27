@@ -6,6 +6,8 @@ module.exports = rows => {
         .map(removePunctuation)
         .map(removeTags)
         .reduce(mergeRows)
+        .split(' ')
+        .map(word => word.toLowerCase().replace('"', ''))
       resolve(words)
     } catch (exception) {
       reject(exception)
