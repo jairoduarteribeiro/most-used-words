@@ -5,6 +5,7 @@ module.exports = rows => {
         .filter(filterValidRows)
         .map(removePunctuation)
         .map(removeTags)
+        .reduce(mergeRows)
       resolve(words)
     } catch (exception) {
       reject(exception)
@@ -22,3 +23,5 @@ const filterValidRows = row => {
 const removePunctuation = row => row.replace(/[,?!.-]/g, '')
 
 const removeTags = row => row.replace(/(<[^>]+)>/ig, '').trim()
+
+const mergeRows = (fullText, row) => `${fullText} ${row}`
